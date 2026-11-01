@@ -1,0 +1,18 @@
+LEARNOVA - SIMPLE ECLIPSE SETUP
+
+You already imported Learnova into Eclipse? No need to import again unless switching to this ZIP.
+
+1. In MySQL Workbench: File > Open SQL Script > database/schema.sql > Execute all.
+2. Run USE learnova_db; SHOW TABLES;  You should get four tables.
+3. In Windows File Explorer, double-click SETUP_MYSQL.bat (in the Learnova folder).
+   Enter the same MySQL username and password you use with MySQL Workbench.
+   This stores the password OUTSIDE the project at %USERPROFILE%\.learnova\database.properties.
+4. Open docs/ADMIN_SETUP.md to create your first administrator.
+5. In MySQL Workbench, open database/seed.sql and Execute all ONCE to add 9 missions.
+6. In Eclipse, right-click Learnova > Maven > Update Project.
+7. Check Java 21 and Tomcat 10.1. Right-click Learnova > Run As > Run on Server.
+8. Open http://localhost:8080/Learnova/ and test register, login, mission, XP, leaderboard.
+
+IMPORTANT: Do not run schema.sql against the Elifa database. Learnova uses learnova_db.
+Do not commit passwords, generated configuration files, or anything in target/.
+Before GitHub push, review changes and ask for approval.

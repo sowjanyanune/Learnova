@@ -1,0 +1,8 @@
+    </main>
+    <footer class="footer">
+        <span>Learnova · Learn. Solve. Level up.</span>
+        <span>Built with JSP, Servlets, JDBC and MySQL</span>
+    </footer>
+</div>
+</body>
+</html>

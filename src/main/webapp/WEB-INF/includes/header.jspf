@@ -1,0 +1,43 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.learnova.util.HtmlUtil" %>
+<%
+    String basePath = request.getContextPath();
+    boolean studentSignedIn = session.getAttribute("userId") != null;
+    boolean adminSignedIn = session.getAttribute("adminId") != null;
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7f9ff">
+    <title><%= HtmlUtil.escape(pageTitle) %> | Learnova</title>
+    <link rel="stylesheet" href="<%= basePath %>/css/style.css">
+</head>
+<body>
+<div class="site-shell">
+    <header class="topbar">
+        <a class="brand" href="<%= basePath %>/index.html"><span class="brand-icon">&lt;/&gt;</span> Learn<span>ova</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="<%= basePath %>/index.html">Home</a>
+            <% if (studentSignedIn) { %>
+                <a href="<%= basePath %>/dashboard">Dashboard</a>
+                <a href="<%= basePath %>/missions">Missions</a>
+                <a href="<%= basePath %>/leaderboard">Leaderboard</a>
+                <a href="<%= basePath %>/courses">Courses</a>
+                <form method="post" action="<%= basePath %>/logout" class="inline-form"><button type="submit" class="nav-action">Logout</button></form>
+            <% } else if (adminSignedIn) { %>
+                <a href="<%= basePath %>/admin/dashboard">Admin dashboard</a>
+                <a href="<%= basePath %>/admin/add-question">Add question</a>
+                <a href="<%= basePath %>/admin/questions">Manage questions</a>
+                <form method="post" action="<%= basePath %>/admin-logout" class="inline-form"><button type="submit" class="nav-action">Logout</button></form>
+            <% } else { %>
+                <a href="<%= basePath %>/missions">Missions</a>
+                <a href="<%= basePath %>/leaderboard">Leaderboard</a>
+                <a href="<%= basePath %>/login.jsp">Student login</a>
+                <a href="<%= basePath %>/courses">Courses</a>
+                <a class="nav-action" href="<%= basePath %>/admin-login.jsp">Admin</a>
+            <% } %>
+        </nav>
+    </header>
+    <main class="content">
